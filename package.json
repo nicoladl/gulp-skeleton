@@ -1,23 +1,19 @@
 {
-  "name": "netflix",
+  "name": "gulp-skeleton",
   "version": "1.0.0",
-  "description": "Pagina da implementare su TIMVision",
-  "main": "index.html",
+  "description": "Gulp skeleton for simple web app",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/HartSrlMassimilianoVentimiglia/tim_manutenzione.git"
+    "url": "git+ssh://git@github.com:nicoladl/gulp-skeleton.git"
   },
-  "keywords": [
-    "netflix",
-    "timvision"
-  ],
+  "keywords": [],
   "author": "Nicola De Lazzari",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/HartSrlMassimilianoVentimiglia/tim_manutenzione/issues"
+    "url": "https://github.com/nicoladl/gulp-skeleton/issues"
   },
   "devDependencies": {
     "bower": "^1.7.7",
