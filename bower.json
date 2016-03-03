@@ -20,6 +20,11 @@
     "tests"
   ],
   "dependencies": {
-    "jquery": "1.12.0"
+    "jquery": "1.12.0",
+    "compass-breakpoint": "~2.6.1",
+    "hammerjs": "~2.0.4",
+    "picturefill": "~3.0.1",
+    "svg4everybody": "~2.0.0",
+    "es6-promise": "~3.0.2"
   }
 }
