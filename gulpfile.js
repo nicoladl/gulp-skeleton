@@ -99,10 +99,11 @@ gulp.task('watch', ['vendor', 'sass', 'js', 'images', 'w3cjs', 'copy-files'] ,fu
         server: webPath + '/'
     });
 
-
     gulp.src(basePath + '/font/*')
         .pipe(gulp.dest(webPath + '/font'));
 
+    gulp.src(basePath + '/svg/*')
+        .pipe(gulp.dest(webPath + '/svg'));
 
     gulp.src(basePath + '/*.html')
         .pipe(gulp.dest(webPath + '/'));

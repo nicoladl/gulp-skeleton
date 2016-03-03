@@ -24,7 +24,6 @@
     "gulp-if": "^2.0.0",
     "gulp-clean-css": "^2.0.3",
     "gulp-sass": "^2.1.1",
-    "gulp-uglifyjs": "^0.6.2",
     "gulp-w3cjs": "^1.2.0",
     "gulp-imagemin": "^2.4.0",
     "imagemin-pngquant": "^4.2.2",
