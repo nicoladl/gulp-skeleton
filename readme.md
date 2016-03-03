@@ -1,11 +1,2 @@
-/** TODO **/
-
--> $ npm install
--> $ bower install
--> $ gulp watch
-
-/** START DEPLOY **/
-
--> $ gulp prod
-
-// Folder WEB
+# gulp-skeleton
+Gulp skeleton for simple web app
