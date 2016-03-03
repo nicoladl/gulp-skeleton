@@ -24,6 +24,7 @@ var vendor = [
 	bowerPath + '/jquery/dist/jquery.min.js'
 ]
 
+// task - bower vendors
 gulp.task('vendor', function(){
 
 	return gulp.src(vendor)
@@ -34,6 +35,7 @@ gulp.task('vendor', function(){
 	    .pipe(gulp.dest(webPath + '/js/vendor'))
 });
 
+// task - sass
 gulp.task('sass', function () {
 
   return gulp.src(basepath + 'sass/**/*.scss')
@@ -49,6 +51,7 @@ gulp.task('sass', function () {
     .pipe(browserSync.stream());
 });
 
+// task - js
 gulp.task('js',function(){
 
 	return gulp.src(basepath + 'js/*.js')
@@ -59,6 +62,7 @@ gulp.task('js',function(){
 		.pipe(gulp.dest(webPath + '/js'));
 });
 
+// task - image minificator
 gulp.task('images', function() {
 
     return gulp.src(basepath + 'img/*')
@@ -70,6 +74,7 @@ gulp.task('images', function() {
         .pipe(gulp.dest(webPath + '/img'));
 });
 
+// task - w3c controller
 gulp.task('w3cjs', function () {
     return gulp.src(basepath + '*.html')
     .pipe(w3cjs())
@@ -81,17 +86,20 @@ gulp.task('w3cjs', function () {
     }));
 });
 
+// task - copy files
 gulp.task('copy-files', function(){
 
 	return gulp.src(['index.html', basepath + 'img/**/*', basepath + 'font/*'],{ 'base' : '.' })
 		.pipe(gulp.dest(webPath));
 });
 
+// task - production task
 gulp.task('prod',function(){
 	prod = true;
 	runSequence('vendor', 'sass', 'js', 'images', 'w3cjs', 'copy-files');
 });
 
+// task - watch task
 gulp.task('watch', ['vendor', 'sass', 'js', 'images', 'w3cjs', 'copy-files'] ,function(){
 
 	browserSync.init({
