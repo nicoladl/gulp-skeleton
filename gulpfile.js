@@ -16,7 +16,7 @@ browserSync  = require('browser-sync').create();
 
 var prod = false;
 
-var basepath = './',
+var basepath = './src/',
 webPath      = basepath + 'web',
 bowerPath    = './bower_components';
 
