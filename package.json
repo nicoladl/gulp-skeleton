@@ -1,0 +1,39 @@
+{
+  "name": "netflix",
+  "version": "1.0.0",
+  "description": "Pagina da implementare su TIMVision",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/HartSrlMassimilianoVentimiglia/tim_manutenzione.git"
+  },
+  "keywords": [
+    "netflix",
+    "timvision"
+  ],
+  "author": "Nicola De Lazzari",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/HartSrlMassimilianoVentimiglia/tim_manutenzione/issues"
+  },
+  "devDependencies": {
+    "bower": "^1.7.7",
+    "browser-sync": "^2.11.1",
+    "gulp": "^3.9.0",
+    "gulp-autoprefixer": "^3.1.0",
+    "gulp-concat": "^2.6.0",
+    "gulp-if": "^2.0.0",
+    "gulp-clean-css": "^2.0.3",
+    "gulp-sass": "^2.1.1",
+    "gulp-uglifyjs": "^0.6.2",
+    "gulp-w3cjs": "^1.2.0",
+    "gulp-imagemin": "^2.4.0",
+    "imagemin-pngquant": "^4.2.2",
+    "run-sequence": "^1.1.5",
+    "gulp-w3cjs": "^1.2.0",
+    "through2": "^2.0.1"
+  }
+}
