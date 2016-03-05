@@ -12,6 +12,7 @@ Gulp skeleton for simple web app
 ##GULP
 
 ```gulp watch```
+
 ```gulp prod```
 
 ##MAKEFILE
@@ -19,4 +20,5 @@ Gulp skeleton for simple web app
 Remember to update {} with your infos
 
 ```make -f Makefile first-deploy```
+
 ```make -f Makefile deploy```
