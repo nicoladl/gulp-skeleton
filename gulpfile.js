@@ -85,14 +85,17 @@ gulp.task('w3cjs', function () {
 // task - copy files
 gulp.task('copy-files', function(){
 
-    return gulp.src(['index.html', basePath + '/img/**/*', basePath + '/font/*'],{ 'base' : '.' })
-        .pipe(gulp.dest(webPath));
-});
+    gulp.src(basePath + '/img/*')
+        .pipe(gulp.dest(webPath + '/img'));
 
-// task - production task
-gulp.task('prod',function(){
-    prod = true;
-    runSequence('vendor', 'sass', 'js', 'images', 'w3cjs', 'copy-files');
+    gulp.src(basePath + '/svg/*')
+        .pipe(gulp.dest(webPath + '/svg'));
+
+    gulp.src(basePath + '/font/*')
+        .pipe(gulp.dest(webPath + '/font'));
+
+    gulp.src(basePath + '/*.html')
+        .pipe(gulp.dest(webPath + '/'));
 });
 
 // task - watch task
@@ -102,17 +105,17 @@ gulp.task('watch', ['vendor', 'sass', 'js', 'images', 'w3cjs', 'copy-files'] ,fu
         server: webPath + '/'
     });
 
-    gulp.src(basePath + '/svg/*')
-        .pipe(gulp.dest(webPath + '/svg'));
-
-    gulp.src(basePath + '/*.html')
-        .pipe(gulp.dest(webPath + '/'));
-
     gulp.watch(basePath + '/sass/**/*.scss', ['sass']).on('change', browserSync.reload);
     gulp.watch(basePath + '/js/*.js', ['js']).on('change', browserSync.reload);
     gulp.watch(basePath + '/img/**/*', ['images']).on('change', browserSync.reload);
     gulp.watch(basePath + '/*.html', ['w3cjs', 'copy-files']).on('change', browserSync.reload);
     
+});
+
+// task - production task
+gulp.task('prod',function(){
+    prod = true;
+    runSequence('vendor', 'sass', 'js', 'images', 'w3cjs', 'copy-files');
 });
 
 gulp.task('default', ['vendor', 'sass', 'js', 'images', 'w3cjs', 'copy-files']);
