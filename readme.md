@@ -1,17 +1,24 @@
-# gulp-skeleton
+# Gulp-skeleton
 Gulp skeleton for simple web app
 
-#NPM
+##NPM
 
-- npm install
+```npm install```
 
-#BOWER
+##BOWER
 
-- bower install
+```bower install```
 
-(jQuery 1.12.0)
+##GULP
 
-#GULP
+```gulp watch```
 
-- gulp watch
-- gulp prod
+```gulp prod```
+
+##MAKEFILE
+
+Remember to update {} with your infos
+
+```make -f Makefile first-deploy```
+
+```make -f Makefile deploy```

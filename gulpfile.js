@@ -11,6 +11,7 @@ imagemin     = require('gulp-imagemin'),
 pngquant     = require('imagemin-pngquant'),
 w3cjs        = require('gulp-w3cjs'),
 through2     = require('through2'),
+critical     = require('critical'),
 browserSync  = require('browser-sync').create();
 
 var prod = false;
@@ -20,7 +21,10 @@ webPath      = './web',
 bowerPath    = './bower_components';
 
 var vendor = [
-    bowerPath + '/jquery/dist/jquery.min.js'
+    bowerPath + '/jquery/dist/jquery.min.js',
+    bowerPath + '/picturefill/dist/picturefill.min.js',
+    bowerPath + '/svg4everybody/dist/svg4everybody.min.js',
+    bowerPath + '/hammerjs/hammerjs.min.js'
 ]
 
 // task - bower vendors
@@ -82,31 +86,39 @@ gulp.task('w3cjs', function () {
 // task - copy files
 gulp.task('copy-files', function(){
 
-    return gulp.src(['index.html', basePath + '/img/**/*', basePath + '/font/*'],{ 'base' : '.' })
-        .pipe(gulp.dest(webPath));
-});
-
-// task - production task
-gulp.task('prod',function(){
-    prod = true;
-    runSequence('vendor', 'sass', 'js', 'images', 'w3cjs', 'copy-files');
-});
-
-// task - watch task
-gulp.task('watch', ['vendor', 'sass', 'js', 'images', 'w3cjs', 'copy-files'] ,function(){
-
-    browserSync.init({
-        server: webPath + '/'
-    });
-
-    gulp.src(basePath + '/font/*')
-        .pipe(gulp.dest(webPath + '/font'));
+    gulp.src(basePath + '/img/*')
+        .pipe(gulp.dest(webPath + '/img'));
 
     gulp.src(basePath + '/svg/*')
         .pipe(gulp.dest(webPath + '/svg'));
 
+    gulp.src(basePath + '/font/*')
+        .pipe(gulp.dest(webPath + '/font'));
+
     gulp.src(basePath + '/*.html')
         .pipe(gulp.dest(webPath + '/'));
+});
+
+// Generate & Inline Critical-path CSS
+gulp.task('critical', function (cb) {
+    critical.generate({
+        inline: true,
+        base: webPath,
+        src: 'index.html',
+        css: webPath + '/css/gen.css',
+        dest: webPath + '/index.html',
+        width: 980,
+        height: 600,
+        minify: true
+    });
+});
+
+// task - watch task
+gulp.task('watch', ['vendor', 'sass', 'js', 'images', 'w3cjs', 'copy-files'], function(){
+
+    browserSync.init({
+        server: webPath + '/'
+    });
 
     gulp.watch(basePath + '/sass/**/*.scss', ['sass']).on('change', browserSync.reload);
     gulp.watch(basePath + '/js/*.js', ['js']).on('change', browserSync.reload);
@@ -115,4 +127,10 @@ gulp.task('watch', ['vendor', 'sass', 'js', 'images', 'w3cjs', 'copy-files'] ,fu
     
 });
 
-gulp.task('default', ['vendor', 'sass', 'js', 'images', 'w3cjs', 'copy-files']);
+// task - production task
+gulp.task('prod', ['vendor', 'sass', 'js', 'images', 'w3cjs', 'copy-files'], function(){
+    prod = true;
+    runSequence('critical');
+});
+
+gulp.task('default', ['vendor', 'sass', 'js', 'images', 'w3cjs', 'copy-files', 'critical']);
