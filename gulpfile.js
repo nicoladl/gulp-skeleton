@@ -11,6 +11,7 @@ imagemin     = require('gulp-imagemin'),
 pngquant     = require('imagemin-pngquant'),
 w3cjs        = require('gulp-w3cjs'),
 through2     = require('through2'),
+critical     = require('critical'),
 browserSync  = require('browser-sync').create();
 
 var prod = false;
@@ -98,8 +99,22 @@ gulp.task('copy-files', function(){
         .pipe(gulp.dest(webPath + '/'));
 });
 
+// Generate & Inline Critical-path CSS
+gulp.task('critical', function (cb) {
+    critical.generate({
+        inline: true,
+        base: webPath,
+        src: 'index.html',
+        css: webPath + '/css/gen.css',
+        dest: webPath + '/index.html',
+        width: 980,
+        height: 600,
+        minify: true
+    });
+});
+
 // task - watch task
-gulp.task('watch', ['vendor', 'sass', 'js', 'images', 'w3cjs', 'copy-files'] ,function(){
+gulp.task('watch', ['vendor', 'sass', 'js', 'images', 'w3cjs', 'copy-files'], function(){
 
     browserSync.init({
         server: webPath + '/'
@@ -113,9 +128,9 @@ gulp.task('watch', ['vendor', 'sass', 'js', 'images', 'w3cjs', 'copy-files'] ,fu
 });
 
 // task - production task
-gulp.task('prod',function(){
+gulp.task('prod', ['vendor', 'sass', 'js', 'images', 'w3cjs', 'copy-files'], function(){
     prod = true;
-    runSequence('vendor', 'sass', 'js', 'images', 'w3cjs', 'copy-files');
+    runSequence('critical');
 });
 
-gulp.task('default', ['vendor', 'sass', 'js', 'images', 'w3cjs', 'copy-files']);
+gulp.task('default', ['vendor', 'sass', 'js', 'images', 'w3cjs', 'copy-files', 'critical']);
