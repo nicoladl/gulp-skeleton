@@ -1,3 +1,9 @@
+<!--
+  Title: Gulp-skeleton
+  Description: Gulp skeleton for simple web app
+  Author: nicoladl
+  -->
+
 # Gulp-skeleton
 Gulp skeleton for simple web app
 
