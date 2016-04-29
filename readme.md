@@ -31,8 +31,11 @@ Please contact me opening an issue or tweet me for any question.
 ###Install
 
 ```npm install
+
 bower install
+
 gulp watch
+
 gulp prod```
 
 ###Deploy
