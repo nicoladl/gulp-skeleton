@@ -9,6 +9,7 @@ Gulp skeleton for simple web app.
 
 Please contact me opening an issue or tweet me for any question.
 [Project issue](https://github.com/nicoladl/gulp-skeleton/issues "Project issue")
+
 [Twitter](https://twitter.com/nicoladelazzari "Twitter")
 
 ####Dependences
