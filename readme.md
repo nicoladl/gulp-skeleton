@@ -28,21 +28,14 @@ Please contact me opening an issue or tweet me for any question.
 - run-sequence
 - through2
 
-##NPM
+###Install
 
 ```npm install```
-
-##BOWER
-
 ```bower install```
-
-##GULP
-
 ```gulp watch```
-
 ```gulp prod```
 
-##MAKEFILE
+###Deploy
 
 Remember to update {} with your infos
 
