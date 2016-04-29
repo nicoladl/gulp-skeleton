@@ -4,7 +4,7 @@
   Author: nicoladl
   -->
 
-# Gulp-skeleton
+# Gulp Skeleton
 Gulp skeleton for simple web app.
 
 Please contact me opening an issue or tweet me for any question.
