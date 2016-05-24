@@ -1,3 +1,1 @@
-$(function() {
-    console.log('ready');
-});
+// put here yours js
