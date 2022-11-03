@@ -12,7 +12,7 @@ Please contact me opening an issue or tweet me for any question.
 * [Project issue](https://github.com/nicoladl/gulp-skeleton/issues "Project issue")
 * [Twitter](https://twitter.com/nicoladelazzari "Twitter")
 
-####Dependences
+### Dependences
 - bower
 - browser-sync
 - critical
@@ -28,14 +28,14 @@ Please contact me opening an issue or tweet me for any question.
 - run-sequence
 - through2
 
-###Install
+### Install
 
 ```npm install```
 ```bower install```
 ```gulp watch```
 ```gulp prod```
 
-###Deploy
+### Deploy
 
 Remember to update {} with your infos
 
